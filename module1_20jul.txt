@@ -1,0 +1,40 @@
+List 5 difference between Browser JS(console) v Nodejs
+
+Browser JS
+1.it is a programming language which can be run in any browser engine
+2.used on client-side
+3. it can run in any browser engine such as v8, spider monkey,chakra ,nitro etc..
+4.Javascript is capable enough to add HTML and play with the DOM.
+5.browser.js has all these as predefined objects except global object 
+6.Node.js has full system access i.e can read and write directly to the file system 
+7.
+Nodejs
+1.it is a interpreter and environment for javascript which also includes many librarires
+2.used on server-side
+3.it can run only in V8 engine of chrome
+4.Nodejs does not have capability to add HTML tags.
+5.many objects are missing like document object,window object and location object
+6.Browser.js is sandboxed for the safety purposes and have access limited to the browser.
+
+watch & summary 5 points - https://www.youtube.com/watch?v=SmE4OwHztCc&ab_channel=JSConf
+
+1. To answer how the browser actually renders a website,it goes through parsing html and css, render tree, layout and paint
+2.parse HTML:html is forgiving by nature which can be explained the tokenizer in the parsing flow which takes html inputs and breaks into representing opening and closing tags, so if cclosing tag is not provided ,it will close automatically with the help of tokenizer.After tokenizer ,it will create a parse tree which is a representation of your html which is then converted into Dom elements. 
+there are certain situations where it will stop the parsing of HTML because of script ,link and style tag.
+Speculative Parsing:will look ahead of the parsing while stopping for the script to execute, it will create another thread to fetch images/style sheets
+Reentrant:  the parsing process can be interrupted generally if we write document.write inside script tag which will redo the dom tree
+Parse Css:it will create CSS object model like DOM 
+3.Render/Frame Tree: combines two object models and style resolution, it is a actual representaion of what will be shown on screen.it consist/divided into four trees namely, Render objects,render styles,render layers and lineboxes. it is a visal output with a geometric info which can be used later to layout and paint.
+4.layout :Computes where a  node will be on screen, it is a recursive process which traverse the render tree and locates its node position and size.the way it fixes the positions is by batch layouts i.e the browser will intelligently detect batch changes which flag as empty ,then the batch will traverse the dirty trees .doing a font-size change,browser size /accessing javascript properties  it will change the entire layout of the document
+5.Paint:computes the bitmaps and composites to the screen,this is where it will takes all the information from the render tree and will actually paint.it produces a bitmap from each layer and is uploaded to GPU as texture which will render the final screen
+
+Execute the bellow code and write your description in txt file
+typeof(1)          - "number"
+typeof(1.1)        - "number"
+typeof('1.1')      - "string"
+typeof(true)       - "boolean"
+typeof(null)       - "object"
+typeof(undefined)  -"undefined"
+typeof([])         -"object"
+typeof({})         -"object"
+typeof(NaN)        -"number"
