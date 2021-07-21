@@ -1,0 +1,93 @@
+Task - July 21, 2021
+    1)
+    var obj = [
+          { person: "Name 1", age: "2", company: "GUVI" },
+          { person: "Name 2", age: "5", company: "GUVI geek" },
+          { person: "Name 3", age: "8", company: "GUVI geek network" },
+        ]
+		
+use the above JSON to iterate over all for loops (for, for in, for of, forEach)
+using for loop
+for(i=0;i<obj.length;i++)
+{
+    console.log(obj[i].person+":"+obj[i].age+":"+obj[i].company)
+}
+output
+Name 1:2:GUVI
+Name 2:5:GUVI geek
+Name 3:8:GUVI geek network
+
+using for/in loop
+The for...in statement iterates over the enumerable properties of an object
+for(let i in obj)
+{
+    console.log(obj[i].person+":"+obj[i].age+":"+obj[i].company)
+}
+output
+Name 1:2:GUVI
+Name 2:5:GUVI geek
+Name 3:8:GUVI geek network
+
+
+using for/of loop
+The for...of statement iterates over values
+for(let i of obj)
+{
+    console.log(i.person+":"+i.age+":"+i.company)
+}
+output
+Name 1:2:GUVI
+Name 2:5:GUVI geek
+Name 3:8:GUVI geek network
+
+using foreach
+obj.forEach(function(i)
+ {console.log(i.person+":"+i.age+":"+i.company)
+ })
+output
+Name 1:2:GUVI
+Name 2:5:GUVI geek
+Name 3:8:GUVI geek network
+
+    2)
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://restcountries.eu/rest/v2/all");
+        xhr.onload = function () {
+          var data = JSON.parse(this.response);
+		  myfun(data)
+          console.log(data);
+        };
+        xhr.send();
+    use the restcountries API url ->  https://restcountries.eu/rest/v2/all
+    and display all the country flags in console
+	
+	function myfun(a)
+        {
+          a.forEach(element => {
+            console.log(element.name+":"+ element.flag)
+          });
+        }
+    3) use the same restcountries and print all countries name, region, sub region and population.
+	function myfun(a)
+        {
+          a.forEach(element => {
+            console.log(element.name+":"+ element.region+ ":"+element.subregion+":"+element.population)
+          });
+    4) read about the difference between window, screen and document in javascript
+
+Window object aka Global object
+--Window is the main JavaScript object root, ( the global object in a browser) and it can also be treated as the root of the document object model. You can access it as window.
+--the window is the first thing that gets loaded into the browser.
+--This window object has the majority of the properties like length, innerWidth, innerHeight, name etc..
+
+Document object
+--document contains the DOM, initialized by parsing HTML
+--The document object is your html, aspx, php, or other document that will be loaded into the browser. 
+--it has properties available to it like title, URL, cookie, etc
+
+Screen Object
+--screen describes the physical display's full screen
+--The window object also has a screen object with properties describing the physical display
+--screen properties width and height are the full screen
+
+Note:document can also be window.document, screen can be window.screen sice window is the root(global) object
