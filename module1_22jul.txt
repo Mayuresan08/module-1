@@ -1,0 +1,116 @@
+1) create your own resume data in JSON format
+var Resume={
+    Name:"Mayuresan",
+    Age:24,
+    Professional_Experience:'2 years',
+    Skills:{
+        frontend_Technology:["React","Angular"],
+        backend_Technology:[".NET CORE","Node js"],
+        Database:["MongoDB","MSSQL","Oracle 12c"],
+        web_Technologies:["HTML","CSS","Javascript","Bootstrap"],
+        Programming_Languages:["c#","c++"],
+        Domain:["worked on Linux,windows,Database and Virtualization"]
+    },
+    Experience:{
+        Role:"System and Database Administrator",
+        Duration:"July 2019 to July 2021",
+        
+    },
+    Education:{
+        undergraduate:{
+            institute:"SASTRA",
+            score:"CGPA 7.63/10",
+            course:"B.TECH Meachanical Engineering",
+            Year_of_passing:2019
+        },
+        higher_secondary:{
+            institute:"AlPHA Matriculation",
+            score:"1148/1200",
+            Year_of_passing:2015
+        },
+        secondary:{
+            institute:"AlPHA wisdom",
+            score:" GPA 9.8/10",
+            Year_of_passing:2013
+        }
+    },
+    
+    
+}
+ 2) how to compare two JSON have the same properties without order?
+    
+	1. with the same key in order
+
+var obj1 = { name: "Person 1", age:5 };
+var obj2 = { name: "Person 1", age:5 };
+
+console.log(JSON.stringify(obj1) === JSON.stringify(obj2)
+
+
+2.with the keys in diiferent order
+var obj1 = { name: "Person 1", age:5 };
+var obj2 = { age:5, name: "Person 1" };
+
+shallow equal(the values inside object are primitive and not object of object )
+var obj1 = { name: "Person 1", age:5 };
+var obj2 = { age:5, name: "Person 1" };
+if(isEqual(obj1,obj2))
+console.log("equal")
+else
+console.log("not equal")
+function isEqual(object1,object2)
+{
+    var key1=Object.keys(object1);
+    var key2=Object.keys(object2);
+    
+    if(key1.length !== key2.length)
+    {
+    return false
+    }
+    
+    for(let k of key1)
+    {
+        if(obj1[k] !== obj2[k])
+        {
+            return false
+        }
+    }
+    return true
+}
+});
+
+
+3.deep equal: (checking object of object)
+var obj1 = { name: "Person 1", age:5 ,address:{city:"trichy"} };
+var obj2 = { age:5, name: "Person 1" ,address:{city:"trichy"}};
+if(deepEqual(obj1,obj2))
+console.log("equal")
+else
+console.log("not equal")
+function deepEqual(object1,object2)
+{
+    var key1=Object.keys(object1);
+    var key2=Object.keys(object2);
+    console.log(key1,key2)
+    if(key1.length !== key2.length)
+    {
+    return false
+    }
+    
+    for(let k of key1)
+    {
+        const value1=object1[k];
+        const value2=object2[k];
+        
+        const areObjects = isObject(value1) && isObject(value2)
+        if((areObjects && !deepEqual(value1,value2))||(!areObjects && value1 !== value2))
+        {
+            return false
+        }
+    }
+    return true
+}
+
+function isObject(object) {
+  return object != null && typeof object === 'object';
+}
