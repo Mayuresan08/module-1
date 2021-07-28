@@ -1,0 +1,103 @@
+1.Movie
+class Movie {
+    constructor(title,studio,rating="PG")
+    {
+        this.title=title;
+        this.studio=studio;
+        this.rating=rating;
+    }
+
+     static getPg(movie)
+    { 
+       let moviePg=[]
+        movie.forEach(element => {
+            if(element.rating =="PG")
+            moviePg.push(element)
+        });
+        return moviePg
+
+
+    }
+}
+let newMovie1=new Movie("Casino Royale","Eon Productions","PG-13")
+let newMovie2=new Movie("mersal","thenandal","PG")
+let newMovie3=new Movie("beast","sun",)
+let arr=[newMovie1,newMovie2,newMovie3]
+let PGMovies=Movie.getPg(arr)
+console.log(PGMovies)
+
+2.circle
+class Circle{
+    constructor(radius,color)
+    {
+        this._radius=radius;
+        this._color=color;
+    }
+
+    get radius(){
+        return this._radius
+    }
+    set radius(value){
+        this._radius =value
+
+    }
+    get color(){
+        return this._color
+    }
+    set color(value){
+        this._color=value
+    }
+
+    getArea(){
+        return Math.PI*Math.pow(this._radius,2)
+    }
+    
+    getCircum(){
+        return 2*Math.PI*this._radius
+    }
+
+}
+let circle1= new Circle(1,"Red")
+console.log(circle1.getArea())
+console.log(circle1.getCircum())
+
+3.Person
+class Person{
+    constructor (firstName,lastName,age){
+        this._firstName=firstName;
+        this._lastName=lastName;
+        this._age=age;
+    }
+
+    getDetails(){
+        return [this._firstName,this._lastName,this._age]
+    }
+}
+
+let me= new Person("Mayuresan","yokendran",10)
+console.log(me.getDetails())
+
+4.Uber
+class Uber{
+    constructor(totalKm,waitingTime=0)
+    {
+        this.totalKm=totalKm;
+        this.waitingTime=waitingTime
+    }
+//for first 2 km the fare is 10 and proceeding km cost is 4 
+    calculateFare(){
+        if(this.totalKm<=2)
+        {
+        return (10)
+        }
+
+        this.totalKm =this.totalKm-2
+        return (10+(this.totalKm*4)+(this.waitingTime*2))
+
+
+    }
+}
+let newRide =new Uber(2)
+console.log(newRide.calculateFare())
+let nextRide = new Uber(5,4)
+console.log(nextRide.calculateFare())
